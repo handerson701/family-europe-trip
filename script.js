@@ -1,6 +1,6 @@
 // Intersection Observer for scroll animations
 const observerOptions = { threshold: 0.3 };
-const elementsToShow = document.querySelectorAll('.pop-title, .pop-quote, .btn');
+const elementsToShow = document.querySelectorAll('.pop-title, .quote-block, .prompt-block h2, .btn');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -10,11 +10,16 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 elementsToShow.forEach(el => observer.observe(el));
 
-// Simple confetti animation
+// Confetti animation setup
 const confettiCanvas = document.getElementById('confetti-canvas');
 const ctx = confettiCanvas.getContext('2d');
-confettiCanvas.width = window.innerWidth;
-confettiCanvas.height = window.innerHeight;
+
+function resizeCanvas() {
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
 let confettiParticles = [];
 class Confetti {
