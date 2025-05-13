@@ -14,6 +14,7 @@ body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
   text-align: center;
 }
 
+/* Confetti canvas layer */
 #welcome #confetti-canvas {
   position: absolute;
   top: 0;
@@ -21,10 +22,22 @@ body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 0;
 }
 
+.welcome-content {
+  position: relative;
+  z-index: 1;
+  padding: 1rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+/*.pop-title and .pop-quote animations */
 .welcome-content .pop-title,
-.welcome-content .pop-quote {
+.welcome-content .pop-quote,
+.welcome-content h2,
+.btn {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease-out;
@@ -34,9 +47,42 @@ body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
   transform: translateY(0);
 }
 
+.pop-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.quote-block {
+  background: #ffd1dc;
+  padding: 1rem;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+.pop-quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.prompt-block h2 {
+  background: #ffb3c1;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 .btn {
   display: inline-block;
-  margin: 1rem;
   padding: 0.75rem 1.5rem;
   background: #fff;
   border-radius: 25px;
@@ -44,9 +90,12 @@ body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
   color: #333;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out 0.3s;
 }
 
-.btn.visible { opacity: 1; transform: translateY(0); }
+/* Responsive for iPhones and small screens */
+@media (max-width: 480px) {
+  .pop-title { font-size: 2rem; }
+  .pop-quote { font-size: 1rem; }
+  .prompt-block h2 { font-size: 1.25rem; }
+  .btn { padding: 0.5rem 1rem; font-size: 1rem; }
+}
