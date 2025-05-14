@@ -6,33 +6,97 @@
   <title>Geneva - Anderson Family Trip</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Page Title and Quote */
-    .page-title { font-size: 2rem; margin: 1rem 0; text-align: center; }
-    .quote-block { max-width: 600px; margin: 0.5rem auto 2rem; }
+    /* Page layout */
+    main { padding: 80px 1rem 2rem; max-width: 700px; margin: auto; }
+    .page-title { font-size: 2.5rem; text-align: center; margin-bottom: 0.5rem; }
+    .quote-block p { font-style: italic; text-align: center; max-width: 600px; margin: 0.5rem auto 2rem; color: #555; }
 
-    /* Map Slider */
-    .map-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
-    .map-slide { flex: 0 0 100%; scroll-snap-align: start; padding: 1rem; box-sizing: border-box; }
-    .map-slide h2 { margin-bottom: 0.5rem; }
+    /* Section titles */
+    .section-title {
+      font-size: 1.75rem;
+      text-align: center;
+      margin: 2rem 0 1rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.25rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+      bottom: 0; width: 50%; height: 4px;
+      background: #ff7f9c;
+      border-radius: 2px;
+    }
+
+    /* Map slider container outline */
+    .map-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      margin: auto;
+      max-width: 700px;
+      padding: 1rem 0;
+    }
+    .map-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      box-sizing: border-box;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .map-slide h2 {
+      margin: 0.5rem;
+      font-size: 1.25rem;
+      text-align: center;
+      color: #333;
+    }
     .map-slider::-webkit-scrollbar { display: none; }
 
-    /* Restaurants List */
-    .restaurants-list { max-width: 600px; margin: 2rem auto; }
-    .restaurants-list details { margin-bottom: 1rem; }
-    .restaurants-list summary { cursor: pointer; font-weight: bold; }
-    .restaurants-list .options { margin-top: 0.5rem; padding-left: 1rem; }
+    /* Restaurant categories */
+    .restaurants-list { margin: 2rem 0; }
+    .category-title {
+      font-size: 1.5rem;
+      margin: 1.5rem 0 0.5rem;
+      text-align: center;
+      color: #444;
+      background: #ffe4ec;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+    .restaurants-list details {
+      margin: 0.5rem 0;
+      padding: 0.5rem 1rem;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .restaurants-list summary {
+      cursor: pointer;
+      font-weight: bold;
+      list-style: none;
+    }
+    .restaurants-list .options a {
+      display: inline-block;
+      margin: 0.25rem 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
 
-    /* Photo Gallery */
-    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; max-width: 600px; margin: 2rem auto; }
-    .photo-gallery img { width: calc(50% - 0.5rem); object-fit: cover; border-radius: 8px; }
+    /* Photo gallery */
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .photo-gallery img { width: calc(50% - 0.5rem); border-radius: 8px; }
 
-    /* Fun Facts */
-    .fun-facts { max-width: 600px; margin: 2rem auto; }
-    .fun-facts ul { list-style: disc inside; }
+    /* Fun facts */
+    .fun-facts { margin: 2rem 0; }
+    .fun-facts ul { list-style: disc inside; max-width: 600px; margin: auto; color: #333; }
   </style>
 </head>
 <body>
-  <!-- reuse header/navigation from index.html -->
+  <!-- Header -->
   <header class="site-header">
     <div class="logo">Europe Trip</div>
     <button class="menu-toggle" aria-label="Open menu">
@@ -52,60 +116,101 @@
       <p>“The calm waters of Lake Geneva set the scene for our family adventure.”</p>
     </div>
 
-    <!-- Swipeable maps -->
+    <h2 class="section-title">Maps</h2>
     <div class="map-slider">
       <div class="map-slide">
         <h2>Restaurants</h2>
-        <!-- Embed your Google My Maps for restaurants -->
-        <iframe
-          src="https://www.google.com/maps/d/u/1/embed?mid=1yYdLk1A0KHuhwmCBYpVRNRuHj9eHzAI&ehbc=2E312F" 
-          width="100%" height="400" style="border:0;"
-          allowfullscreen="" loading="lazy"></iframe>
-      </div>
-      <div class="map-slide">
-        <h2>Attractions</h2>
-        <!-- Embed your Google My Maps for attractions -->
-        <iframe
-          src="YOUR_ATTRACTIONS_MAP_EMBED_URL"
-          width="100%" height="400" style="border:0;"
-          allowfullscreen="" loading="lazy"></iframe>
-      </div>
+        <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1yYdLk1A0KHuhwmCBYpVRNRuHj9eHzAI&ehbc=2E312F" 
+        width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
     </div>
+    <div class="map-slide">
+      <h2>Attractions</h2>
+      <iframe src="https://www.google.com/maps/d/u/1/embed?mid=1boNTUm8SkImaK5S9lUKC3e5d8FEbDD0&ehbc=2E312F"
+      width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
 
-    <!-- Restaurants Interactive List -->
-    <section class="restaurants-list">
-      <h2>Restaurants</h2>
-      <!-- Example entry: replicate per restaurant -->
-      <details>
-        <summary>Chez Gaston (French Cuisine)</summary>
-        <div class="options">
-          <a href="https://maps.google.com/?q=Chez+Gaston,+Geneva" target="_blank">Open in Google Maps</a><br>
-          <a href="https://chezgaston-menu.example.com" target="_blank">View Menu</a><br>
-          <a href="https://chezgaston-booking.example.com" target="_blank">Book Reservation</a>
-        </div>
-      </details>
-      <!-- add more details elements here -->
-    </section>
+  <h2 class="section-title">Restaurants</h2>
+  <section class="restaurants-list">
+    <!-- Swiss -->
+    <h3 class="category-title">Swiss</h3>
+    <details>
+      <summary>Le Flocon de Sel</summary>
+      <div class="options">
+        <a href="#" target="_blank">Open in Maps</a><br>
+        <a href="#" target="_blank">View Menu</a>
+      </div>
+    </details>
+    <!-- Italian -->
+    <h3 class="category-title">Italian</h3>
+    <details>
+      <summary>Ristorante Molino</summary>
+      <div class="options">
+        <a href="#" target="_blank">Open in Maps</a><br>
+        <a href="#" target="_blank">View Menu</a>
+      </div>
+    </details>
+    <!-- French -->
+    <h3 class="category-title">French</h3>
+    <details>
+      <summary>Café du Centre</summary>
+      <div class="options">
+        <a href="#" target="_blank">Open in Maps</a><br>
+        <a href="#" target="_blank">View Menu</a>
+      </div>
+    </details>
+    <!-- Breakfast -->
+    <h3 class="category-title">Breakfast</h3>
+    <details>
+      <summary>Birdie Food & Coffee</summary>
+      <div class="options">
+        <a href="#" target="_blank">Open in Maps</a>
+      </div>
+    </details>
+    <!-- Sweets -->
+    <h3 class="category-title">Sweets</h3>
+    <details>
+      <summary>Patisserie Auer</summary>
+      <div class="options">
+        <a href="#" target="_blank">Open in Maps</a>
+      </div>
+    </details>
+    <!-- Misc -->
+    <h3 class="category-title">Misc</h3>
+    <details>
+      <summary>Marché de Plainpalais</summary>
+      <div class="options">
+        <a href="#" target="_blank">Open in Maps</a>
+      </div>
+    </details>
+    <!-- British -->
+    <h3 class="category-title">British</h3>
+    <details>
+      <summary>The British Bookshop Café</summary>
+      <div class="options">
+        <a href="#" target="_blank">Open in Maps</a>
+      </div>
+    </details>
+  </section>
 
-    <!-- Photo Gallery -->
-    <section class="photo-gallery">
-      <img src="assets/geneva1.jpg" alt="Geneva Scenery 1">
-      <img src="assets/geneva2.jpg" alt="Geneva Scenery 2">
-      <img src="assets/geneva3.jpg" alt="Geneva Scenery 3">
-      <img src="assets/geneva4.jpg" alt="Geneva Scenery 4">
-    </section>
+  <h2 class="section-title">Photos</h2>
+  <section class="photo-gallery">
+    <img src="assets/geneva1.jpg" alt="Geneva Scenery 1">
+    <img src="assets/geneva2.jpg" alt="Geneva Scenery 2">
+    <img src="assets/geneva3.jpg" alt="Geneva Scenery 3">
+    <img src="assets/geneva4.jpg" alt="Geneva Scenery 4">
+  </section>
 
-    <!-- Fun Facts -->
-    <section class="fun-facts">
-      <h2>Fun Facts</h2>
-      <ul>
-        <li>Geneva is home to the Jet d’Eau, one of the world’s tallest fountains.</li>
-        <li>The city is multilingual: French, English, and German are widely spoken.</li>
-        <li>Geneva hosts the headquarters of the Red Cross and many UN agencies.</li>
-      </ul>
-    </section>
-  </main>
+  <h2 class="section-title">Fun Facts</h2>
+  <section class="fun-facts">
+    <ul>
+      <li>Geneva is home to the Jet d’Eau, one of the world’s tallest fountains.</li>
+      <li>The city is multilingual: French, English, and German are widely spoken.</li>
+      <li>Geneva hosts the headquarters of the Red Cross and many UN agencies.</li>
+    </ul>
+  </section>
+</main>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
