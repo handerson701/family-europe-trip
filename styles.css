@@ -1,6 +1,5 @@
-/* Basic reset */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
+<!-- styles.css -->
+body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #fbe8a6; color: #333; }
 
 .welcome {
   position: relative;
@@ -9,93 +8,97 @@ body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; }
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   background: linear-gradient(135deg, #fbe8a6, #f28ab2);
   text-align: center;
 }
 
-/* Confetti canvas layer */
-#welcome #confetti-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+/* Confetti layer */
+#confetti-canvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; pointer-events: none;
+  z-index: 0; transition: opacity 2s ease-out;
 }
 
 .welcome-content {
-  position: relative;
-  z-index: 1;
+  position: relative; z-index: 1;
   padding: 1rem;
-  width: 100%;
-  max-width: 600px;
+  width: 100%; max-width: 600px;
 }
 
-/*.pop-title and .pop-quote animations */
-.welcome-content .pop-title,
-.welcome-content .pop-quote,
-.welcome-content h2,
-.btn {
+/* Pop title */
+.pop-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.6s ease-out;
-}
-.welcome-content .visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.pop-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
   line-height: 1.2;
 }
 
+/* Stylized quote block */
 .quote-block {
   background: #ffd1dc;
-  padding: 1rem;
-  border-radius: 12px;
+  border: 2px dashed #ff7f9c;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1rem 1.5rem;
+  margin: 0 auto 1.5rem;
   display: inline-block;
-  margin-bottom: 1.5rem;
+  max-width: 90%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out 0.2s;
 }
 .pop-quote {
+  margin: 0;
   font-style: italic;
   font-size: 1.2rem;
-  margin: 0;
 }
 
-.prompt-block h2 {
+/* Prompt section */
+.prompt-section {
   background: #ffb3c1;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
+  border-radius: 16px;
+  padding: 1rem;
   display: inline-block;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out 0.4s;
+}
+.prompt-section h2 {
+  margin: 0 0 1rem;
   font-size: 1.5rem;
 }
 
+/* Buttons container inside prompt */
 .buttons {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 1rem;
 }
+
+/* Button styles */
 .btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
   background: #fff;
-  border-radius: 25px;
-  text-decoration: none;
   color: #333;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
   font-weight: bold;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out 0.6s;
 }
 
-/* Responsive for iPhones and small screens */
+/* Visible state */
+.visible { opacity: 1 !important; transform: translateY(0) !important; }
+
+/* Responsive */
 @media (max-width: 480px) {
   .pop-title { font-size: 2rem; }
   .pop-quote { font-size: 1rem; }
-  .prompt-block h2 { font-size: 1.25rem; }
+  .prompt-section h2 { font-size: 1.25rem; }
   .btn { padding: 0.5rem 1rem; font-size: 1rem; }
 }
