@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geneva - Anderson Family Trip</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page Title and Quote */
+    .page-title { font-size: 2rem; margin: 1rem 0; text-align: center; }
+    .quote-block { max-width: 600px; margin: 0.5rem auto 2rem; }
+
+    /* Map Slider */
+    .map-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
+    .map-slide { flex: 0 0 100%; scroll-snap-align: start; padding: 1rem; box-sizing: border-box; }
+    .map-slide h2 { margin-bottom: 0.5rem; }
+    .map-slider::-webkit-scrollbar { display: none; }
+
+    /* Restaurants List */
+    .restaurants-list { max-width: 600px; margin: 2rem auto; }
+    .restaurants-list details { margin-bottom: 1rem; }
+    .restaurants-list summary { cursor: pointer; font-weight: bold; }
+    .restaurants-list .options { margin-top: 0.5rem; padding-left: 1rem; }
+
+    /* Photo Gallery */
+    .photo-gallery { display: flex; flex-wrap: wrap; gap: 1rem; max-width: 600px; margin: 2rem auto; }
+    .photo-gallery img { width: calc(50% - 0.5rem); object-fit: cover; border-radius: 8px; }
+
+    /* Fun Facts */
+    .fun-facts { max-width: 600px; margin: 2rem auto; }
+    .fun-facts ul { list-style: disc inside; }
+  </style>
+</head>
+<body>
+  <!-- reuse header/navigation from index.html -->
+  <header class="site-header">
+    <div class="logo">Europe Trip</div>
+    <button class="menu-toggle" aria-label="Open menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="dropdown-menu">
+      <a href="index.html">Home</a>
+      <a href="paris.html">Paris</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">Geneva</h1>
+    <div class="quote-block">
+      <p>“The calm waters of Lake Geneva set the scene for our family adventure.”</p>
+    </div>
+
+    <!-- Swipeable maps -->
+    <div class="map-slider">
+      <div class="map-slide">
+        <h2>Restaurants</h2>
+        <!-- Embed your Google My Maps for restaurants -->
+        <iframe
+          src="https://www.google.com/maps/d/u/1/embed?mid=1yYdLk1A0KHuhwmCBYpVRNRuHj9eHzAI&ehbc=2E312F" 
+          width="100%" height="400" style="border:0;"
+          allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class="map-slide">
+        <h2>Attractions</h2>
+        <!-- Embed your Google My Maps for attractions -->
+        <iframe
+          src="YOUR_ATTRACTIONS_MAP_EMBED_URL"
+          width="100%" height="400" style="border:0;"
+          allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <!-- Restaurants Interactive List -->
+    <section class="restaurants-list">
+      <h2>Restaurants</h2>
+      <!-- Example entry: replicate per restaurant -->
+      <details>
+        <summary>Chez Gaston (French Cuisine)</summary>
+        <div class="options">
+          <a href="https://maps.google.com/?q=Chez+Gaston,+Geneva" target="_blank">Open in Google Maps</a><br>
+          <a href="https://chezgaston-menu.example.com" target="_blank">View Menu</a><br>
+          <a href="https://chezgaston-booking.example.com" target="_blank">Book Reservation</a>
+        </div>
+      </details>
+      <!-- add more details elements here -->
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="photo-gallery">
+      <img src="assets/geneva1.jpg" alt="Geneva Scenery 1">
+      <img src="assets/geneva2.jpg" alt="Geneva Scenery 2">
+      <img src="assets/geneva3.jpg" alt="Geneva Scenery 3">
+      <img src="assets/geneva4.jpg" alt="Geneva Scenery 4">
+    </section>
+
+    <!-- Fun Facts -->
+    <section class="fun-facts">
+      <h2>Fun Facts</h2>
+      <ul>
+        <li>Geneva is home to the Jet d’Eau, one of the world’s tallest fountains.</li>
+        <li>The city is multilingual: French, English, and German are widely spoken.</li>
+        <li>Geneva hosts the headquarters of the Red Cross and many UN agencies.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

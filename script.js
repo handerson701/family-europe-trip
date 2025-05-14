@@ -1,13 +1,24 @@
 // Intersection Observer for scroll animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible')
+    } else {
+      entry.target.classList.remove('visible');
+    }
   });
 }, { threshold: 0.3 });
 
 // Elements to observe
-[...document.querySelectorAll('.pop-title, .quote-block, .prompt-section, .btn')]
+[...document.querySelectorAll('.pop-title, .globe-container, .quote-block, .prompt-section, .btn')]
   .forEach(el => observer.observe(el));
+
+// Hamburger menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+menuToggle.addEventListener('click', () => {
+  dropdownMenu.classList.toggle('open');
+});
 
 // Confetti animation
 const canvas = document.getElementById('confetti-canvas');
@@ -23,4 +34,3 @@ make(); run();
 
 // Fade out confetti
 setTimeout(() => { canvas.style.opacity = '0'; }, 3000);
-
